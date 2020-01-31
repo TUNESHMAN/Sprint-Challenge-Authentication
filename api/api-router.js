@@ -4,8 +4,8 @@ const jokesRouter = require("../jokes/jokes-router");
 
 router.use("/auth", authRouter);
 router.use("/jokes", jokesRouter);
-router.get("/", () => {
-  resizeBy.json({
+router.get("/", (req,res) => {
+  res.json({
     api: "There are many jokes here"
   });
 });
