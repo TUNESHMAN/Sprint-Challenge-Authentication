@@ -59,6 +59,25 @@ router.post("/login", (req, res) => {
     });
 });
 
-// LOGGOUT ENDPOINT COMES HERE
+// LOGOUT ENDPOINT COMES HERE
+router.get("/logout", (req, res) => {
+  if (req.session) {
+    req.session.destroy(err => {
+      if (err) {
+        res.json({
+          message: "You are logging out of the site"
+        });
+      } else {
+        res.status(200).json({
+          message: "Thanks for coming"
+        });
+      }
+    });
+  } else {
+    res.status(200).json({
+      message: "You are not yet logged in"
+    });
+  }
+});
 
 module.exports = router;
